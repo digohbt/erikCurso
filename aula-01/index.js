@@ -29,18 +29,26 @@
     },3000)
   }
 
+
+//   aqui começa busca dos dados utilizando callback para buscas assicronas 
+//  primero  chama buscar usuario para depois filtar telefone endereco 
+
   obterUsuario( function resolverUsuario(erro, usuario) {
+    /*funcao resolver usuario , 
+    retorna todas informacoes do usuario recebe callbak seu retorno sera  dados do usuario  */
      if(erro) {
          console.log('Deu Ruim em Usuario', error)
         return;
      }
-
+    //   depois buscando telefona usando outra callback ..
      obterTelefone( usuario.id , function resolverTelefone (erro1, telefone) {
 
         if(erro1) {
             console.log('Deu Ruim em telefone', error)
            return;
         }
+    //   depois buscando endereço  usando outra callback ..
+
         obterEndereco( usuario.id, function resolverEndereco (erro3, endereco ) {
 
             if(erro3) {
